@@ -1,3 +1,4 @@
 export const enum Page {
-     GAME
+     GAME,
+     LOGIN
 }

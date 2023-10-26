@@ -1,10 +1,14 @@
+export enum MessageType {
+    UPDATE = 200,
+    PLAYER_KEY_DOWN = 201,
+    PLAYER_MOUSE_DOWN = 202,
+    PLAYER_MOUSE_MOVE = 203
+}
+
 export type OnMessageHandler = (eventData: any) => void;
 
-export const MessageType = {
-    UPDATE: 1,
-    PLAYER_MOUSE_MOVE: 2
-}
-export default class Network {
+
+class Network {
     private socket: any;
     private events: Map<number, [any, OnMessageHandler]> = new Map<number, [any, OnMessageHandler]>()
 
@@ -13,39 +17,34 @@ export default class Network {
             // @ts-ignore
             window.WebSocket = window.MozWebSocket;
         }
-    }
+        if (window.WebSocket) {
+            this.socket = new WebSocket("ws://localhost:8085/websocket");
+        } else {
+            alert("Your browser does not support Web Socket.");
+        }
 
-    public initConnection(host:string): Promise<any> {
-        return new Promise((resolve, reject) => {
-            if (window.WebSocket) {
-                this.socket = new WebSocket(`ws://${host}/websocket`);
-            } else {
-                reject("Your browser does not support Web Socket.");
+        this.socket.addEventListener('open', (event) => {
+            console.log("Connection established");
+        });
+
+        this.socket.addEventListener('error', (event) => {
+            console.log(event.message);
+        });
+
+        this.socket.addEventListener('close', (event) => {
+            console.log("Web Socket closed");
+        });
+
+        this.socket.addEventListener('message', (evt) => {
+            const eventData = JSON.parse(evt.data);
+            if (this.events.has(eventData.type)) {
+                const arr = this.events.get(eventData.type)
+                arr[1].call(arr[0], eventData.data);
             }
-
-            this.socket.addEventListener('open', (event) => {
-                resolve("Connection established")
-            });
-
-            this.socket.addEventListener('error', (event) => {
-                reject(event.message);
-            });
-
-            this.socket.addEventListener('close', (event) => {
-                reject("Web Socket closed");
-            });
-
-            this.socket.addEventListener('message', (evt) => {
-                const eventData = JSON.parse(evt.data);
-                if (this.events.has(eventData.type)) {
-                    const arr = this.events.get(eventData.type)
-                    arr[1].call(!arr[0] ? arr[0] : this, eventData.data);
-                }
-            });
-        })
+        });
     }
 
-    public on(type: number, handler: OnMessageHandler, thisArg: any = null) {
+    public on(type: number, handler: OnMessageHandler, thisArg:any) {
         this.events.set(type, [thisArg, handler]);
     }
 

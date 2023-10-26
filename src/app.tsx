@@ -3,6 +3,7 @@ import React from 'react';
 import {useAppSelector} from "./hooks";
 import Routes from "./routes";
 import game from "./phaser-game"
+import Loader from "./component/loader";
 
 window.addEventListener('load', () => {
       game.scene.start("bootstrap")
@@ -11,9 +12,13 @@ window.addEventListener('load', () => {
 
 export const App = () => {
     const page = useAppSelector((state) => state.application.currentPage)
+    const loading = useAppSelector((state) => state.application.isLoading)
     return (
         <div className="inherit-size">
-            {Routes.get(page)}
+            {!loading && Routes.get(page)}
+            <div className="bottom-center pointers-none">
+                <Loader isLoading={loading}/>
+            </div>
         </div>
     );
 };

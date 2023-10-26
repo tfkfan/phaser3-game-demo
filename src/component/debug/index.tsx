@@ -6,23 +6,26 @@ import {CONTROLS} from "../../controls";
  const DebugPanel = () => {
     const [fps, setFps] = useState(0);
     const [version, setVersion] = useState('');
+    const [skill, setSkill] = useState(0);
     CONTROLS.registerGameDebugControls({
         setVersion,
-        setFps
+        setFps,
+        setSkill
     })
 
     return (
         <>
-            <div style={{
-                pointerEvents: 'none',
-                userSelect: 'none'
-            }}>
+            <div>
                 <span >
                     Fps: {fps}
                 </span>
                 <br></br>
                 <span >
                     Version: {version}
+                </span>
+                <br></br>
+                <span >
+                    Current skill: {skill+1}
                 </span>
             </div>
         </>
