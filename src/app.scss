@@ -1,0 +1,481 @@
+
+body {
+  --bs-body-color: #ffffff;
+  margin: 0;
+}
+
+a {
+  // color: #533f03;
+  font-weight: bold;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &:after,
+  &::before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+.app-container {
+  box-sizing: border-box;
+
+  .view-container {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+
+    .card {
+      padding: 1rem;
+    }
+
+    .view-routes {
+      height: 100%;
+
+      > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.fullscreen {
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  width: 99% !important;
+  height: calc(100vh - 110px) !important;
+  margin: 5px;
+  z-index: 1000;
+  padding: 5px 25px 50px 25px !important;
+}
+
+/* ==========================================================================
+Browser Upgrade Prompt
+========================================================================== */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+Custom button styles
+========================================================================== */
+
+.icon-button > .btn {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0.5rem;
+  line-height: 1rem;
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+Generic styles
+========================================================================== */
+
+/* Temporary workaround for availity-reactstrap-validation */
+.invalid-feedback {
+  display: inline;
+}
+
+/* other generic styles */
+.white-text{
+  color:white;
+}
+.title {
+  font-size: 1.25em;
+  margin: 1px 10px 1px 10px;
+}
+
+.description {
+  font-size: 0.9em;
+  margin: 1px 10px 1px 10px;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+}
+
+.error {
+  color: white;
+  background-color: red;
+}
+
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.break-word {
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.preserve-space {
+  white-space: pre-wrap;
+}
+
+/* padding helpers */
+
+@mixin pad($size, $side) {
+  @if $size== '' {
+    @if $side== '' {
+      .pad {
+        padding: 10px !important;
+      }
+    } @else {
+      .pad {
+        padding-#{$side}: 10px !important;
+      }
+    }
+  } @else {
+    @if $side== '' {
+      .pad-#{$size} {
+        padding: #{$size}px !important;
+      }
+    } @else {
+      .pad-#{$side}-#{$size} {
+        padding-#{$side}: #{$size}px !important;
+      }
+    }
+  }
+}
+
+@include pad('', '');
+@include pad('2', '');
+@include pad('3', '');
+@include pad('5', '');
+@include pad('10', '');
+@include pad('20', '');
+@include pad('25', '');
+@include pad('30', '');
+@include pad('50', '');
+@include pad('75', '');
+@include pad('100', '');
+@include pad('4', 'top');
+@include pad('5', 'top');
+@include pad('10', 'top');
+@include pad('20', 'top');
+@include pad('25', 'top');
+@include pad('30', 'top');
+@include pad('50', 'top');
+@include pad('75', 'top');
+@include pad('100', 'top');
+@include pad('4', 'bottom');
+@include pad('5', 'bottom');
+@include pad('10', 'bottom');
+@include pad('20', 'bottom');
+@include pad('25', 'bottom');
+@include pad('30', 'bottom');
+@include pad('50', 'bottom');
+@include pad('75', 'bottom');
+@include pad('100', 'bottom');
+@include pad('5', 'right');
+@include pad('10', 'right');
+@include pad('20', 'right');
+@include pad('25', 'right');
+@include pad('30', 'right');
+@include pad('50', 'right');
+@include pad('75', 'right');
+@include pad('100', 'right');
+@include pad('5', 'left');
+@include pad('10', 'left');
+@include pad('20', 'left');
+@include pad('25', 'left');
+@include pad('30', 'left');
+@include pad('50', 'left');
+@include pad('75', 'left');
+@include pad('100', 'left');
+
+@mixin no-padding($side) {
+  @if $side== 'all' {
+    .no-padding {
+      padding: 0 !important;
+    }
+  } @else {
+    .no-padding-#{$side} {
+      padding-#{$side}: 0 !important;
+    }
+  }
+}
+
+@include no-padding('left');
+@include no-padding('right');
+@include no-padding('top');
+@include no-padding('bottom');
+@include no-padding('all');
+
+/* end of padding helpers */
+
+.no-margin {
+  margin: 0px;
+}
+
+@mixin voffset($size) {
+  @if $size== '' {
+    .voffset {
+      margin-top: 2px !important;
+    }
+  } @else {
+    .voffset-#{$size} {
+      margin-top: #{$size}px !important;
+    }
+  }
+}
+
+@include voffset('');
+@include voffset('5');
+@include voffset('10');
+@include voffset('15');
+@include voffset('30');
+@include voffset('40');
+@include voffset('60');
+@include voffset('80');
+@include voffset('100');
+@include voffset('150');
+
+.readonly {
+  background-color: #eee;
+  opacity: 1;
+}
+
+/* ==========================================================================
+make sure browsers use the pointer cursor for anchors, even with no href
+========================================================================== */
+
+a:hover {
+  cursor: pointer;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+button.anchor-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  align-items: initial;
+  text-align: initial;
+  width: 100%;
+}
+
+a.anchor-btn:hover {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+Metrics and Health styles
+========================================================================== */
+
+#threadDump .popover,
+#healthCheck .popover {
+  top: inherit;
+  display: block;
+  font-size: 10px;
+  max-width: 1024px;
+}
+
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#healthCheck .popover {
+  margin-left: -50px;
+}
+
+.health-details {
+  min-width: 400px;
+}
+
+.width-min {
+  width: 1% !important;
+}
+
+.svg-inline--fa {
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-link{
+  transition: none;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  border-color: transparent transparent transparent !important;
+}
+.nav-tabs .nav-link:focus-visible,
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-pills .nav-link:focus, .nav-pills .nav-link:hover, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover ,
+  .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-pills .nav-link.active:focus, .nav-pills .nav-link.active:hover, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover {
+  color: lightgray;
+}
+.inherit-size{
+  min-width: inherit;
+  min-height: inherit;
+}
+.header-account-roles {
+  position: fixed;
+  top: 65px;
+  right: 0;
+  padding: 5px;
+}
+#game-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+  z-index: 2;
+}
+
+.pointers-none {
+  pointer-events: none;
+}
+
+.pointers-active {
+  pointer-events: initial;
+}
+
+#game-canvas {
+  margin: 0 !important;
+}
+
+.app-container {
+
+}
+
+.center-extended {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // background:black;
+  min-height: 100vh;
+}
+
+.bottom {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+
+.bottom-center {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10%;
+}
+
+.top {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+}
+
+.game-form {
+  padding: 20px;
+}
+
+
+.fade-out {
+  -webkit-animation: fadeOutAnimation 5s linear 5s forwards;
+  animation: fadeOutAnimation 5s linear 5s forwards;
+}
+
+@-webkit-keyframes fadeOutAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  -webkit-animation: fadeInAnimation 2s linear forwards;
+  animation: fadeInAnimation 2s linear forwards;
+}
+
+@-webkit-keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
