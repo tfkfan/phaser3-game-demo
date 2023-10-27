@@ -52,27 +52,29 @@ export default class GameScene extends Phaser.Scene {
         // examples
 
         // Animation/Sprite
-        /*  this.anims.create({
-             key: 'explosion',
-             frames: this.anims.generateFrameNumbers('fireballBlast', {start: 0, end: 19, first: 0}),
-             frameRate: 20,
-             repeat: -1
-         })
+        this.anims.create({
+            key: 'explosion',
+            frames: this.anims.generateFrameNumbers('fireballBlast', {start: 0, end: 19, first: 0}),
+            frameRate: 20,
+            repeat: -1
+        })
 
-         this.add.sprite(2500, 1100, "").play('explosion') */
+        this.add.sprite(2500, 1100, "").play('explosion')
 
         // Arcade Physics / collision
 
-
-        /*
-        const items = this.add.group([new Face(this, 2500, 1100)])
-        this.physics.add.collider(this.player, items, (object1:Phaser.Tilemaps.Tile | Phaser.GameObjects.GameObject, object2:Phaser.Tilemaps.Tile | Phaser.GameObjects.GameObject) => {
+        const items = this.add.group([this.createItem()])
+        this.physics.add.collider(this.player, items, (object1: Phaser.Tilemaps.Tile | Phaser.GameObjects.GameObject, object2: Phaser.Tilemaps.Tile | Phaser.GameObjects.GameObject) => {
             object2.destroy(true)
             setTimeout(() => {
                 items.add(this.createItem(), true)
             }, 3000)
         })
-        */
+
+    }
+
+    createItem(): Face {
+        return new Face(this, 2500, 1100)
     }
 
     createPlayer(): Mage {
