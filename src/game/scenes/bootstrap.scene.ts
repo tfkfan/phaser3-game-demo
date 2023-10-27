@@ -29,9 +29,11 @@ export default class BootstrapScene extends Phaser.Scene {
     create() {
         CONTROLS.setProgress(100);
         store.dispatch(setLoading(false))
-        /* this.sound.add('intro').play({
+
+        this.sound.add('intro').play({
             seek: 2.550
-        }); */
+        });
+
         this.add.shader('fireball_shader', window.innerWidth/2, window.innerHeight/2, window.innerWidth ,window.innerHeight);
     }
 }
