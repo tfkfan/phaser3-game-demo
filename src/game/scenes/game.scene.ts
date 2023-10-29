@@ -110,13 +110,8 @@ export default class GameScene extends Phaser.Scene {
     displayMap() {
         this.map = this.add.tilemap('worldmap');
         const tileset = this.map.addTilesetImage('tiles', 'tiles');
-
-        for (let i = 0; i < this.map.layers.length; i++) {
-            const group = [];
-            const layer = this.map.createLayer(0, tileset, 0, 0);
-            layer.setVisible(true);
-            group.push(layer);
-        }
+        for (let i = 0; i < this.map.layers.length; i++)
+            this.map.createLayer(0, tileset, 0, 0).setVisible(true);
     }
 
     update(time, delta) {
