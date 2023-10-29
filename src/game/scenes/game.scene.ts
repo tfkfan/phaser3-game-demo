@@ -39,7 +39,7 @@ export default class GameScene extends Phaser.Scene {
                 this.player.walk(direction, false)
         });
 
-        this.input.on("pointerdown", (evt: {
+        this.input.on(Phaser.Input.Events.POINTER_DOWN, (evt: {
             worldX: number | Phaser.Types.Math.Vector2Like;
             worldY: number;
         }) => this.player.attack(new Vector2(evt.worldX, evt.worldY)));
