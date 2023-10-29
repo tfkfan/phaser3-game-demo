@@ -40,7 +40,7 @@ export default class GameScene extends Phaser.Scene {
         });
 
         this.input.on(Phaser.Input.Events.POINTER_DOWN, (evt: {
-            worldX: number | Phaser.Types.Math.Vector2Like;
+            worldX: number;
             worldY: number;
         }) => this.player.attack(new Vector2(evt.worldX, evt.worldY)));
 
