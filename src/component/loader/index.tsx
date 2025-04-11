@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Progress} from 'reactstrap';
-import {CONTROLS} from "../../controls";
+import { useGlobalReg } from '../../hooks';
 
 export const Loader = ({isLoading = false}) => {
     const [progress, setProgress] = useState(0)
 
-    CONTROLS.registerGameLoaderControls({
+    useGlobalReg({
         setProgress
     })
 

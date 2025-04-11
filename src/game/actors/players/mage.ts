@@ -1,9 +1,9 @@
 import * as Phaser from "phaser"
 import Player from "./player";
 import {SkillFactory} from "../skills/skill-factory";
-import {CONTROLS} from "../../../controls";
 import Scene = Phaser.Scene;
 import Vector2 = Phaser.Math.Vector2;
+import { useGlobalState } from '../../../hooks';
 
 export default class Mage extends Player {
     private skillFactory: SkillFactory = new SkillFactory();
@@ -17,7 +17,7 @@ export default class Mage extends Player {
     public setSkillIndex(index: number) {
         if (index === undefined || index < 0 || index > 1)
             return
-        CONTROLS.setSkill(index)
+        useGlobalState(state=>state.setSkill(index))
         this.currentSkillIndex = index
     }
 

@@ -1,9 +1,8 @@
 import './index.scss';
 import React from 'react';
 import {Button, Card, Form, Input} from 'reactstrap';
-import {useAppDispatch} from "../../hooks";
+import { useAppDispatch, useGlobalState } from '../../hooks';
 import {setCurrentPage, setLoading, setNickname} from "../../store/application.store";
-import {CONTROLS} from "../../controls";
 import {Page} from "../../config/constants";
 import {launchGame} from "../../phaser-game";
 
@@ -17,7 +16,7 @@ export const Login = () => {
             alert("Name is required")
             return;
         }
-        CONTROLS.setProgress(50)
+        useGlobalState(state=>state.setProgress(50));
         dispatch(setLoading(true))
         dispatch(setNickname(data.get("name").toString()))
         setTimeout(() => {
