@@ -15,10 +15,8 @@ export const useGlobalState = function (operation: (state: any) => void) {
 };
 
 export function useGlobalReg<S extends Record<string, Dispatch<SetStateAction<any>>>>(state: S): void {
-  console.log(Object.keys(state));
-  for (const [key, setStateAction] of Object.entries(state)) {
+  for (const [key, setStateAction] of Object.entries(state))
     GLOBAL_STATE_TYPE.prototype[key] = setStateAction;
-  }
 }
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
