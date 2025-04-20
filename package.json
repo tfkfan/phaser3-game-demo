@@ -23,8 +23,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run webapp:prod --",
-    "clean-www": "rimraf build/resources/main/static/app/{src,build/}",
-    "cleanup": "rimraf build/resources/main/static/",
+    "clean-www": "rimraf build/bundle/app/{src,build/}",
+    "cleanup": "rimraf build/bundle/",
     "lint:fix": "npm run lint -- --fix",
     "prettier:check": "prettier --check \"{,src/**/,webpack/}*.{md,json,yml,html,cjs,mjs,js,ts,tsx,css,scss,java}\"",
     "prettier:format": "prettier --write \"{,src/**/,webpack/}*.{md,json,yml,html,cjs,mjs,js,ts,tsx,css,scss,java}\"",

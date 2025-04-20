@@ -20,7 +20,7 @@ module.exports = async () =>
       main: './src/index',
     },
     output: {
-      path: utils.root('build/resources/main/static/'),
+      path: utils.root('build/bundle/'),
       filename: '[name].[contenthash:8].js',
       chunkFilename: '[name].[chunkhash:8].chunk.js',
     },
@@ -100,23 +100,6 @@ module.exports = async () =>
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false,
-      }),
-      new FileManagerPlugin({
-        events: {
-          onEnd: {
-            delete: [
-              {
-                source:  '../src/main/resources/static/**.*',
-                options: {
-                  force: true,
-                },
-              }
-            ],
-            copy: [
-              { source: '../frontend/build/resources/main/static', destination: '../src/main/resources/static' }
-            ],
-          },
-        },
       }),
     ],
   });
